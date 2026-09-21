@@ -64,29 +64,29 @@ export const ActiveTheoryHeartScene: React.FC = () => {
     const starTexture = new THREE.CanvasTexture(starCanvas);
 
     const starMat = new THREE.PointsMaterial({
-      size: 0.052,
+      size: 0.075,
       vertexColors: true,
       map: starTexture,
       transparent: true,
-      opacity: 0.65,
+      opacity: 0.6,
       depthWrite: false,
     });
     const starField = new THREE.Points(starGeo, starMat);
     scene.add(starField);
 
-    // 1B. Foreground Floating Bokeh Crystal Particles (Layer 3)
-    const foreCount = 350;
+    // Foreground Floating Telemetry Orbs
+    const foreCount = 180;
     const foreGeo = new THREE.BufferGeometry();
     const forePos = new Float32Array(foreCount * 3);
     const foreCol = new Float32Array(foreCount * 3);
 
     for (let i = 0; i < foreCount; i++) {
       const i3 = i * 3;
-      forePos[i3] = (Math.random() - 0.5) * 10;
-      forePos[i3 + 1] = (Math.random() - 0.5) * 10;
-      forePos[i3 + 2] = 1.0 + Math.random() * 3.5; // In front of heart, near camera
+      forePos[i3] = (Math.random() - 0.5) * 12;
+      forePos[i3 + 1] = (Math.random() - 0.5) * 12;
+      forePos[i3 + 2] = 1.0 + Math.random() * 2.0;
 
-      const isRuby = Math.random() > 0.75;
+      const isRuby = Math.random() > 0.8;
       foreCol[i3] = isRuby ? 0.88 : 0.05;
       foreCol[i3 + 1] = isRuby ? 0.12 : 0.58;
       foreCol[i3 + 2] = isRuby ? 0.28 : 0.54;
@@ -143,50 +143,52 @@ export const ActiveTheoryHeartScene: React.FC = () => {
       heartBasePos[i3 + 2] = heartPos[i3 + 2];
 
       const r = Math.random();
-      const mixed = new THREE.Color();
-      if (r > 0.75) {
-        mixed.lerpColors(colorTealDark, colorCyan, Math.random());
-      } else if (r > 0.3) {
-        mixed.lerpColors(colorTealDark, colorTealBright, Math.random());
+      let vertexColor: THREE.Color;
+      if (r < 0.45) {
+        vertexColor = colorTealDark;
+      } else if (r < 0.75) {
+        vertexColor = colorTealBright;
+      } else if (r < 0.92) {
+        vertexColor = colorCyan;
       } else {
-        mixed.lerpColors(colorTealBright, colorCoralRed, 0.4);
+        vertexColor = colorCoralRed;
       }
 
-      heartCol[i3] = mixed.r;
-      heartCol[i3 + 1] = mixed.g;
-      heartCol[i3 + 2] = mixed.b;
+      heartCol[i3] = vertexColor.r;
+      heartCol[i3 + 1] = vertexColor.g;
+      heartCol[i3 + 2] = vertexColor.b;
     }
 
     heartGeo.setAttribute('position', new THREE.BufferAttribute(heartPos, 3));
     heartGeo.setAttribute('color', new THREE.BufferAttribute(heartCol, 3));
 
     const heartMat = new THREE.PointsMaterial({
-      size: 0.054,
+      size: 0.048,
       vertexColors: true,
       map: starTexture,
       transparent: true,
       opacity: 0.88,
       depthWrite: false,
+      blending: THREE.NormalBlending,
     });
 
     const heartMesh = new THREE.Points(heartGeo, heartMat);
     heartMesh.position.set(1.4, 0.1, 0);
     scene.add(heartMesh);
 
-    // 3. Bio-Rings in Teal / Turquoise
-    const ringGeo = new THREE.TorusGeometry(1.8, 0.012, 16, 120);
+    // Auscultation Spatial Concentric Rings
+    const ringGeo = new THREE.TorusGeometry(1.6, 0.008, 16, 100);
     const ringMat = new THREE.MeshBasicMaterial({
-      color: 0x0d9488,
+      color: 0x0e7490,
       transparent: true,
-      opacity: 0.35,
-      wireframe: true,
+      opacity: 0.25,
     });
-    const ring1 = new THREE.Mesh(ringGeo, ringMat);
-    ring1.rotation.x = Math.PI / 2.2;
-    ring1.rotation.y = 0.4;
-    heartMesh.add(ring1);
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.rotation.x = Math.PI / 2.3;
+    ring.rotation.y = 0.4;
+    heartMesh.add(ring);
 
-    const ring2 = new THREE.Mesh(ringGeo, ringMat.clone());
+    const ring2 = new THREE.Mesh(ringGeo, ringMat);
     ring2.scale.set(1.3, 1.3, 1.3);
     ring2.rotation.x = Math.PI / 1.7;
     ring2.rotation.z = 0.8;
@@ -206,9 +208,11 @@ export const ActiveTheoryHeartScene: React.FC = () => {
     let shockwaveActive = false;
     let shockwaveScale = 0.1;
 
-    // Mouse Tracking & Dynamic Scroll Zoom Parallax
+    // Mouse Tracking & Dynamic Scroll Velocity
     let mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
     let scrollY = window.scrollY;
+    let lastScrollY = window.scrollY;
+    let scrollVelocity = 0;
     let currentCameraZ = 5.2;
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -217,7 +221,10 @@ export const ActiveTheoryHeartScene: React.FC = () => {
     };
 
     const handleScroll = () => {
-      scrollY = window.scrollY;
+      const nowY = window.scrollY;
+      scrollVelocity = (nowY - lastScrollY) * 0.05;
+      lastScrollY = nowY;
+      scrollY = nowY;
     };
 
     const handleClick = () => {
@@ -240,7 +247,7 @@ export const ActiveTheoryHeartScene: React.FC = () => {
     };
     window.addEventListener('resize', handleResize);
 
-    // Animation Loop with Smooth Camera Dolly Zoom Parallax
+    // Animation Loop with Active Theory Particle Stream & Dolly Parallax
     let animId: number;
     let clock = new THREE.Clock();
     let lastBeat = 0;
@@ -249,7 +256,8 @@ export const ActiveTheoryHeartScene: React.FC = () => {
       animId = requestAnimationFrame(animate);
       const time = clock.getElapsedTime();
 
-      // Lerp mouse
+      // Lerp velocity & mouse
+      scrollVelocity *= 0.92;
       mouse.x += (mouse.targetX - mouse.x) * 0.05;
       mouse.y += (mouse.targetY - mouse.y) * 0.05;
 
@@ -258,17 +266,11 @@ export const ActiveTheoryHeartScene: React.FC = () => {
       const scrollNorm = Math.min(1, Math.max(0, scrollY / maxScroll));
 
       // Active Theory Dynamic Zoom / Fade Parallax Trajectory
-      // Section 1 (Hero): Camera Z ~ 5.2, Heart on right (X: 1.4)
-      // Section 2 (Services): Camera dives in (Z ~ 3.8, X: 0.2, zoom in)
-      // Section 3 (Telemetry): Camera shifts (Z ~ 4.2, X: -0.8)
-      // Section 4 (About): Camera (Z ~ 3.6, X: 1.0)
-      // Section 5 (Risk/Testimonials): Camera pulls back (Z ~ 5.5, X: 0)
-      
-      const targetCameraZ = 5.2 - Math.sin(scrollNorm * Math.PI) * 1.6;
+      const targetCameraZ = 5.2 - Math.sin(scrollNorm * Math.PI) * 1.6 - Math.abs(scrollVelocity) * 0.5;
       currentCameraZ += (targetCameraZ - currentCameraZ) * 0.05;
       camera.position.z = currentCameraZ;
 
-      const targetHeartX = 1.4 * Math.cos(scrollNorm * Math.PI * 1.8);
+      const targetHeartX = (width < 768 ? 0.0 : 1.4) * Math.cos(scrollNorm * Math.PI * 1.8);
       const targetHeartY = 0.1 - scrollNorm * 0.9 + Math.sin(time * 0.8) * 0.1;
       const targetHeartZ = -scrollNorm * 1.5;
 
@@ -276,9 +278,9 @@ export const ActiveTheoryHeartScene: React.FC = () => {
       heartMesh.position.y += (targetHeartY - heartMesh.position.y) * 0.06;
       heartMesh.position.z += (targetHeartZ - heartMesh.position.z) * 0.06;
 
-      // Dynamic Rotation with Parallax Inertia
-      heartMesh.rotation.y = time * 0.25 + mouse.x * 0.7 + scrollNorm * Math.PI * 1.5;
-      heartMesh.rotation.x = 0.15 - mouse.y * 0.45 + Math.sin(time * 0.5) * 0.1;
+      // Dynamic Rotation with Parallax Inertia & Velocity Spin
+      heartMesh.rotation.y = time * 0.25 + mouse.x * 0.7 + scrollNorm * Math.PI * 1.5 + scrollVelocity * 0.15;
+      heartMesh.rotation.x = 0.15 - mouse.y * 0.45 + Math.sin(time * 0.5) * 0.1 - scrollVelocity * 0.1;
 
       // Heartbeat pulse calculation
       const bpm = 72;
@@ -300,17 +302,19 @@ export const ActiveTheoryHeartScene: React.FC = () => {
       const currentScale = 1.0 + scaleOffset;
       heartMesh.scale.set(currentScale, currentScale, currentScale);
 
-      // Particle turbulence
+      // Particle turbulence & velocity stream stretch
       const positions = heartMesh.geometry.attributes.position.array as Float32Array;
+      const velFactor = Math.abs(scrollVelocity) * 0.08;
+
       for (let i = 0; i < heartCount; i++) {
         const i3 = i * 3;
         const bx = heartBasePos[i3];
         const by = heartBasePos[i3 + 1];
         const bz = heartBasePos[i3 + 2];
 
-        const wave = Math.sin(time * 3.5 + bx * 4.0 + by * 3.0) * 0.025;
+        const wave = Math.sin(time * 3.5 + bx * 4.0 + by * 3.0) * (0.025 + velFactor);
         positions[i3] = bx * (1 + scaleOffset * 0.6) + wave;
-        positions[i3 + 1] = by * (1 + scaleOffset * 0.6) + wave;
+        positions[i3 + 1] = by * (1 + scaleOffset * 0.6) + wave - scrollVelocity * 0.02;
         positions[i3 + 2] = bz * (1 + scaleOffset * 0.6);
       }
       heartMesh.geometry.attributes.position.needsUpdate = true;
@@ -325,14 +329,15 @@ export const ActiveTheoryHeartScene: React.FC = () => {
         }
       }
 
-      // Parallax rotation on starField (slow background)
+      // Parallax rotation on starField (slow background) with stream drift
       starField.rotation.y = time * 0.02 + scrollNorm * 0.5;
       starField.rotation.x = time * 0.01 + mouse.y * 0.2;
+      starField.position.y = -scrollVelocity * 0.1;
 
       // Layered Parallax on foreField (fast foreground bokeh particles)
       foreField.rotation.y = -time * 0.05 - scrollNorm * 1.8;
       foreField.rotation.x = -time * 0.03 - mouse.y * 0.6;
-      foreField.position.y = Math.sin(time * 0.6) * 0.15 - scrollNorm * 2.0;
+      foreField.position.y = Math.sin(time * 0.6) * 0.15 - scrollNorm * 2.0 - scrollVelocity * 0.25;
 
       renderer.render(scene, camera);
     };

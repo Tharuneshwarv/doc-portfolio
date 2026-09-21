@@ -15,7 +15,7 @@ import { Footer } from './components/layout/Footer';
 import { ActiveTheoryHeartScene } from './components/canvas/ActiveTheoryHeartScene';
 import { CustomCursor } from './components/ui/CustomCursor';
 import { HudOverlay } from './components/ui/HudOverlay';
-import { LiquidDistortionFilter } from './components/ui/LiquidDistortionFilter';
+import { ActiveTheoryScrollHarness } from './components/ui/ActiveTheoryScrollHarness';
 import { ParallaxSection } from './components/ui/ParallaxWrapper';
 import { Activity, Calendar } from 'lucide-react';
 import { soundManager } from './components/sound/SoundFX';
@@ -33,9 +33,6 @@ export function App() {
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 relative selection:bg-teal-700 selection:text-white overflow-x-hidden">
       
-      {/* Active Theory SVG Liquid / Ripple Distortion Shader Filter */}
-      <LiquidDistortionFilter />
-
       {/* Active Theory Fullscreen WebGL 3D Spatial Universe (Light Crystal Particles) */}
       <ActiveTheoryHeartScene />
 
@@ -48,90 +45,92 @@ export function App() {
       {/* Navigation */}
       <Navbar onOpenBooking={() => handleOpenBooking()} />
 
-      {/* Main Content Sections with Natural Smooth Scroll & Parallax */}
-      <main className="relative z-10 space-y-24 sm:space-y-32">
-        {/* Section 01: Hero & Clinical Quick Info */}
-        <section id="hero" className="pt-2">
-          <ParallaxSection>
-            <HeroSection 
-              onOpenBooking={() => handleOpenBooking()} 
-              onOpenVideo={() => setIsVideoOpen(true)} 
-            />
-          </ParallaxSection>
-          <div className="mt-8">
+      {/* Active Theory Kinetic Scroll Harness (Fluid Wave Distortion + Chromatic Aberration + 3D Incline Tilt) */}
+      <ActiveTheoryScrollHarness>
+        <main className="relative z-10 space-y-24 sm:space-y-32">
+          {/* Section 01: Hero & Clinical Quick Info */}
+          <section id="hero" className="pt-2">
             <ParallaxSection>
-              <QuickInfoBanner />
+              <HeroSection 
+                onOpenBooking={() => handleOpenBooking()} 
+                onOpenVideo={() => setIsVideoOpen(true)} 
+              />
             </ParallaxSection>
-          </div>
-        </section>
-
-        {/* Section 02: Cardiology Services Grid */}
-        <section id="services">
-          <ParallaxSection>
-            <ServicesSection onSelectServiceForBooking={(srv) => handleOpenBooking(srv)} />
-          </ParallaxSection>
-        </section>
-
-        {/* Section 03: Real-Time Interactive ECG Telemetry Lab */}
-        <section id="telemetry" className="relative">
-          <ParallaxSection>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-              <div className="mb-8 text-center max-w-2xl mx-auto">
-                <span className="inline-flex items-center gap-2 rounded-full bg-teal-50 px-4 py-1.5 text-xs font-mono font-bold text-brand-teal border border-teal-200 shadow-sm">
-                  <Activity className="h-3.5 w-3.5 text-brand-teal animate-pulse" />
-                  <span>[ 03 // REAL-TIME ECG TELEMETRY ]</span>
-                </span>
-                <h2 className="mt-3 text-3xl sm:text-5xl font-serif font-bold text-slate-900 tracking-tight">
-                  Cardiac Telemetry Lab
-                </h2>
-                <p className="mt-2 text-slate-600 text-sm font-mono">
-                  Real-time cardiac electrophysiology engine. Adjust cardiac presets and heart rate frequencies below.
-                </p>
-              </div>
-              <EcgOscilloscope />
+            <div className="mt-8">
+              <ParallaxSection>
+                <QuickInfoBanner />
+              </ParallaxSection>
             </div>
-          </ParallaxSection>
-        </section>
+          </section>
 
-        {/* Section 04: About Dr. Anil Sharma */}
-        <section id="about">
-          <ParallaxSection>
-            <AboutDoctor 
-              onOpenVideo={() => setIsVideoOpen(true)} 
-              onOpenBooking={() => handleOpenBooking()} 
-            />
-          </ParallaxSection>
-        </section>
+          {/* Section 02: Cardiology Services Grid */}
+          <section id="services">
+            <ParallaxSection>
+              <ServicesSection onSelectServiceForBooking={(srv) => handleOpenBooking(srv)} />
+            </ParallaxSection>
+          </section>
 
-        {/* Section 05: Cardiac Risk Assessment Calculator */}
-        <section id="risk-quiz">
-          <ParallaxSection>
-            <CardiacRiskQuiz onOpenBooking={() => handleOpenBooking()} />
-          </ParallaxSection>
-        </section>
+          {/* Section 03: Real-Time Interactive ECG Telemetry Lab */}
+          <section id="telemetry" className="relative">
+            <ParallaxSection>
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div className="mb-8 text-center max-w-2xl mx-auto">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-teal-50 px-4 py-1.5 text-xs font-mono font-bold text-brand-teal border border-teal-200 shadow-sm">
+                    <Activity className="h-3.5 w-3.5 text-brand-teal animate-pulse" />
+                    <span>[ 03 // REAL-TIME ECG TELEMETRY ]</span>
+                  </span>
+                  <h2 className="mt-3 text-3xl sm:text-5xl font-serif font-bold text-slate-900 tracking-tight">
+                    Cardiac Telemetry Lab
+                  </h2>
+                  <p className="mt-2 text-slate-600 text-sm font-mono">
+                    Real-time cardiac electrophysiology engine. Adjust cardiac presets and heart rate frequencies below.
+                  </p>
+                </div>
+                <EcgOscilloscope />
+              </div>
+            </ParallaxSection>
+          </section>
 
-        {/* Section 06: Testimonials & Care Experience */}
-        <section id="testimonials" className="space-y-16">
-          <ParallaxSection>
-            <HeartbeatBanner onOpenBooking={() => handleOpenBooking()} />
-          </ParallaxSection>
-          <ParallaxSection>
-            <TestimonialsSection />
-          </ParallaxSection>
-        </section>
+          {/* Section 04: About Dr. Anil Sharma */}
+          <section id="about">
+            <ParallaxSection>
+              <AboutDoctor 
+                onOpenVideo={() => setIsVideoOpen(true)} 
+                onOpenBooking={() => handleOpenBooking()} 
+              />
+            </ParallaxSection>
+          </section>
 
-        {/* Section 07: Clinical Articles & Research */}
-        <section id="blog">
-          <ParallaxSection>
-            <BlogAndArticles />
-          </ParallaxSection>
-        </section>
-      </main>
+          {/* Section 05: Cardiac Risk Assessment Calculator */}
+          <section id="risk-quiz">
+            <ParallaxSection>
+              <CardiacRiskQuiz onOpenBooking={() => handleOpenBooking()} />
+            </ParallaxSection>
+          </section>
 
-      {/* Footer */}
-      <footer id="footer" className="relative z-10 mt-32">
-        <Footer />
-      </footer>
+          {/* Section 06: Testimonials & Care Experience */}
+          <section id="testimonials" className="space-y-16">
+            <ParallaxSection>
+              <HeartbeatBanner onOpenBooking={() => handleOpenBooking()} />
+            </ParallaxSection>
+            <ParallaxSection>
+              <TestimonialsSection />
+            </ParallaxSection>
+          </section>
+
+          {/* Section 07: Clinical Articles & Research */}
+          <section id="blog">
+            <ParallaxSection>
+              <BlogAndArticles />
+            </ParallaxSection>
+          </section>
+        </main>
+
+        {/* Footer */}
+        <footer id="footer" className="relative z-10 mt-32">
+          <Footer />
+        </footer>
+      </ActiveTheoryScrollHarness>
 
       {/* Floating CTA Consultation Terminal Button */}
       <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
