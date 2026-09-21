@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans bg-[#F8FAFC] text-slate-900;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* Active Theory Light Theme - Frosted Liquid Glass */
+.spatial-card-light {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(14, 116, 144, 0.14);
+  box-shadow: 0 20px 40px -10px rgba(10, 77, 82, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.spatial-card-light:hover {
+  border-color: rgba(14, 116, 144, 0.35);
+  box-shadow: 0 25px 50px -12px rgba(14, 116, 144, 0.15), 0 8px 12px -3px rgba(0, 0, 0, 0.04);
+}
+
+.spatial-nav-light {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(14, 116, 144, 0.1);
+  box-shadow: 0 4px 20px rgba(10, 77, 82, 0.04);
+}
+
+.glow-teal-light {
+  box-shadow: 0 0 25px rgba(14, 116, 144, 0.2);
+}
+
+/* Subtle background clinical grid */
+.spatial-grid-bg {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(14, 116, 144, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 116, 144, 0.035) 1px, transparent 1px);
+}
+
+/* Active Theory Liquid / Ripple Displacement Filter */
+.liquid-distortion {
+  filter: url(#active-theory-liquid-distortion);
+  will-change: filter, transform;
+}
+
+.liquid-distortion-subtle {
+  transition: filter 0.2s ease-out;
+}
+
+.liquid-distortion-subtle:hover {
+  filter: url(#active-theory-liquid-distortion);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0a4d52;
+}

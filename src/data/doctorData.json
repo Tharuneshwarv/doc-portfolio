@@ -1,0 +1,189 @@
+{
+  "doctor": {
+    "name": "Dr. Anil Sharma",
+    "prefix": "Dr.",
+    "title": "Consultant Cardiologist",
+    "degrees": "MD (Internal Medicine), DM (Cardiology)",
+    "institution": "AIIMS, New Delhi",
+    "badgeText": "EXPERT HEART CARE • PERSONALISED FOR YOU",
+    "heroHeadline": {
+      "main": "Healthy Hearts",
+      "italic": "Happier Lives"
+    },
+    "heroDescription": "Comprehensive cardiac care with compassion, expertise and the latest medical advancements.",
+    "bio": "With over 18 years of experience, I am committed to providing evidence-based, compassionate care. My focus is on prevention, early detection and advanced treatments to help you live a longer, healthier life.",
+    "missionQuote": "Compassion, Expertise, For a Healthier Tomorrow.",
+    "bannerQuote": "Live Stronger Longer",
+    "bannerSubtext": "A healthy heart starts with small everyday choices and timely check-ups.",
+    "stats": {
+      "yearsExperience": "18+",
+      "patientsTreated": "10,000+",
+      "satisfactionRate": "95%",
+      "starRating": "4.9",
+      "totalReviews": "1,200+"
+    },
+    "media": {
+      "heroPortraitUrl": "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=800",
+      "consultationPhotoUrl": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=900",
+      "videoMessageUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "bannerCouplePhotoUrl": "https://images.unsplash.com/photo-1516585427167-9f4af9627e6c?auto=format&fit=crop&q=80&w=1200"
+    }
+  },
+  "clinic": {
+    "name": "New Delhi Cardiology Clinic",
+    "address": "123 Heart Care Road, Connaught Place",
+    "city": "New Delhi",
+    "country": "India",
+    "postalCode": "110001",
+    "phone": "+91 98765 43210",
+    "phoneClean": "+919876543210",
+    "whatsAppNumber": "919876543210",
+    "whatsAppDefaultMessage": "Hello Dr. Anil Sharma, I would like to consult regarding cardiac care.",
+    "email": "contact@dranilsharma.com",
+    "googleMapsUrl": "https://maps.google.com/?q=New+Delhi+Cardiology+Clinic",
+    "hours": {
+      "weekdays": "Mon - Sat: 9:00 AM - 6:00 PM",
+      "sunday": "Sunday: Emergency On-Call"
+    }
+  },
+  "socialLinks": {
+    "linkedin": "https://linkedin.com/in/dranilsharma",
+    "facebook": "https://facebook.com/dranilsharmaclinic",
+    "instagram": "https://instagram.com/dranilsharma_cardio",
+    "twitter": "https://twitter.com/dranilsharma",
+    "youtube": "https://youtube.com/@dranilsharma"
+  },
+  "services": [
+    {
+      "id": 1,
+      "title": "Consultation",
+      "tagline": "Personalized evaluation and treatment plans",
+      "iconKey": "Stethoscope",
+      "duration": "30-45 mins",
+      "highlights": [
+        "Comprehensive clinical assessment",
+        "Holistic blood pressure & lifestyle review",
+        "Evidence-based medication management",
+        "Second opinion on complex interventions"
+      ],
+      "description": "In-depth one-on-one clinical evaluation tailored to your personal medical history, genetics, and current symptoms."
+    },
+    {
+      "id": 2,
+      "title": "ECG",
+      "tagline": "Quick and accurate heart assessments",
+      "iconKey": "Activity",
+      "duration": "15 mins",
+      "highlights": [
+        "12-Lead high precision ECG",
+        "Arrhythmia & Palpitation detection",
+        "Conduction abnormality screening",
+        "Instant digital report delivery"
+      ],
+      "description": "State-of-the-art non-invasive electrocardiogram mapping electrical conduction pathways to detect irregularities instantly."
+    },
+    {
+      "id": 3,
+      "title": "Echocardiography",
+      "tagline": "Detailed heart function analysis",
+      "iconKey": "Scan",
+      "duration": "25 mins",
+      "highlights": [
+        "High-definition Doppler 2D/3D Echo",
+        "Valvular regurgitation & stenosis grading",
+        "Left ventricular ejection fraction analysis",
+        "Wall motion score index"
+      ],
+      "description": "Advanced ultrasound visualization of the heart chambers, valves, and pericardial structures in real time."
+    },
+    {
+      "id": 4,
+      "title": "Preventive Care",
+      "tagline": "Early detection & proactive heart health",
+      "iconKey": "ShieldCheck",
+      "duration": "45 mins",
+      "highlights": [
+        "Lipid & Apolipoprotein-B profiling",
+        "Cardiovascular genetic risk scoring",
+        "Coronary calcium scan recommendation",
+        "Custom nutritional & aerobic protocol"
+      ],
+      "description": "Proactive preventative protocol designed to catch atherosclerosis years before symptoms develop."
+    },
+    {
+      "id": 5,
+      "title": "Angiography Support",
+      "tagline": "Guidance and post-procedure care",
+      "iconKey": "Flame",
+      "duration": "60 mins",
+      "highlights": [
+        "Coronary angiography pre-evaluation",
+        "Post-stent medication calibration",
+        "Cardiac rehabilitation pacing",
+        "Radial vs Femoral artery care recovery"
+      ],
+      "description": "Comprehensive pre-procedure triage and post-angioplasty recovery supervision."
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Neha Verma",
+      "location": "New Delhi",
+      "rating": 5,
+      "comment": "“Dr. Sharma explained everything so clearly and made me feel at ease. Highly recommended!”",
+      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200"
+    },
+    {
+      "id": 2,
+      "name": "Rohit Malhotra",
+      "location": "Gurugram",
+      "rating": 5,
+      "comment": "“Excellent care, professional and compassionate. The staff is also very supportive.”",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200"
+    },
+    {
+      "id": 3,
+      "name": "Suresh Iyer",
+      "location": "Noida",
+      "rating": 5,
+      "comment": "“Truly a doctor who listens. I feel much healthier now.”",
+      "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=200"
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "code": "PUB-01",
+      "title": "5 Everyday Habits for a Healthier Heart",
+      "category": "LIFESTYLE // WELLNESS",
+      "readTime": "4 min read",
+      "date": "SEP 2026",
+      "image": "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=600",
+      "excerpt": "Small micro-routines like morning zone-2 walking, hydration timing, and sodium balancing can compound into massive cardiovascular resilience.",
+      "content": "Cardiovascular wellness does not require drastic overnight changes. Incorporating 30 minutes of brisk walking, reducing refined sugars, maintaining consistent sleep cycles (7-8 hours), practicing 5 minutes of slow diaphragmatic breathing, and staying hydrated are the highest ROI daily habits for artery flexibility."
+    },
+    {
+      "id": 2,
+      "code": "PUB-02",
+      "title": "Heart-Healthy Diet: What to Eat & What to Avoid",
+      "category": "NUTRITION // SCIENCE",
+      "readTime": "6 min read",
+      "date": "AUG 2026",
+      "image": "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&q=80&w=600",
+      "excerpt": "Unpacking the Mediterranean-DASH hybrid dietary pattern: rich in polyphenols, omega-3 fatty acids, and soluble dietary fiber.",
+      "content": "The optimal heart diet emphasizes extra virgin olive oil, wild-caught fatty fish or flaxseed, leafy greens, walnuts, and legumes. Dr. Sharma recommends avoiding ultra-processed trans fats, high-fructose corn syrups, and hidden excess sodium in preserved condiments."
+    },
+    {
+      "id": 3,
+      "code": "PUB-03",
+      "title": "Regular Exercise: How Movement Prolongs Cardiac Life",
+      "category": "PREVENTIVE // FITNESS",
+      "readTime": "5 min read",
+      "date": "JUL 2026",
+      "image": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=600",
+      "excerpt": "How moderate aerobic training increases VO2 max, stimulates nitric oxide vascular dilation, and lowers resting pulse rate.",
+      "content": "Consistent aerobic exercise strengthens the left ventricle, allowing the heart to pump more blood with each stroke and reducing arterial stiffness. Aim for 150 minutes of moderate-intensity or 75 minutes of vigorous cardiovascular exercise weekly."
+    }
+  ]
+}
