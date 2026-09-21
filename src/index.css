@@ -75,3 +75,18 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #0a4d52;
 }
+
+/* Mobile Touch & Viewport Utilities */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (max-width: 768px) {
+  /* Prevent horizontal bounce and ensure crisp text */
+  body {
+    overflow-x: hidden;
+    touch-action: pan-y;
+  }
+}
+
